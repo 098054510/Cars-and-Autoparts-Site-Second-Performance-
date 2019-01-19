@@ -17,7 +17,7 @@ namespace Cars_and_Autoparts_Site_Second_Performance.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "This is a concept site of a generical shop.";
 
             return View();
         }
