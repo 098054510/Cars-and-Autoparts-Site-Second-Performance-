@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Cars_and_Autoparts_Site_Second_Performance.Data;
+using Cars_and_Autoparts_Site_Second_Performance.Services;
+using Cars_And_Parts_Site_Second_Performance.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,14 +37,25 @@ namespace Cars_and_Autoparts_Site_Second_Performance
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<NamelessStoreContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("NamelessStoreContext"),
+                    builder => builder.MigrationsAssembly("Cars_And_Parts_Site_Second_Performance")));
+
+            services.AddScoped<SeedingService>();
+            services.AddScoped<Cars>();
+            services.AddScoped<Brand>();
+            services.AddScoped<Performance_parts>();
+            services.AddScoped<Performance_kit>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {

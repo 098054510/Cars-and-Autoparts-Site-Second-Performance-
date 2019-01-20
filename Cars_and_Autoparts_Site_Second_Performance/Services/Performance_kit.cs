@@ -15,21 +15,21 @@ namespace Cars_and_Autoparts_Site_Second_Performance.Services
         
         public List<Performance_kit> FindAll()
         {
-            return _context.Performance_kits.ToList();
+            return _context.Performance_kit.ToList();
         }
 
-        public int ID { get; set; }
-        public string Name { get; set; }
+        public int id { get; set; }
+        public string Kit_name { get; set; }
         public double Price { get; set; }
 
         public Performance_kit()
         {
         }
 
-        public Performance_kit(int ID, string Name, double Price)
+        public Performance_kit(int id, string Kit_name, double Price)
         {
-            this.ID = ID;
-            this.Name = Name;
+            this.id = id;
+            this.Kit_name = Kit_name;
             this.Price = Price;
         }
     }

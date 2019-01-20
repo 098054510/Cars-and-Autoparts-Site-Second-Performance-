@@ -16,7 +16,7 @@ namespace Cars_and_Autoparts_Site_Second_Performance.Data
 
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Cars> Cars { get; set; }
-        public DbSet<Performance_kit> Performance_kits { get; set; }
+        public DbSet<Performance_kit> Performance_kit { get; set; }
         public DbSet<Performance_parts> Performance_Parts { get; set; }
     }
 }
