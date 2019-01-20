@@ -18,9 +18,9 @@ namespace Cars_And_Parts_Site_Second_Performance.Data
 
         public void Seed() //Use this for add more cars, accessories and brands.
         {
-            if (_context.Performance_kit.Any() ||
-                _context.Brands.Any() ||
+            if (_context.Brands.Any() ||
                 _context.Cars.Any() ||
+                _context.Performance_kit.Any() ||
                 _context.Performance_Parts.Any())
             {
                 return; // Case Return, the Database has been seeded.
